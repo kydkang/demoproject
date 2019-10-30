@@ -69,21 +69,30 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
  export  SECRET_KEY=' ** create a new project and put a copy of secret key here** '
  export  DEBUG=""
 
-[[ To make DemoXXX]]
-- create DemoXXX branch (git branch demoxxx)
-- git checkout demoxxx 
-- modify the source for the demo 
+[[ To make demoX ]]
+- in the local computer 
+    - git branch demoX     [[ create DemoXXX branch ]] 
+    - git checkout demoX
+    - modify the source for the demo 
+    - git add -A / git commit -m "Create demoX" / git push --all 
+
+- in the console in pythonanywhre 
+    - rm -rf sims_project2       ##  [[ delete the whole folder ]]
+    - git clone --single-branch --branch demoX  https://github.com/kydkang/sims_project2.git sims_project2     [[ clone the demo branch ]]
+    - copy the db.sqlite3 from the demo branch into the pythonanywhere
+
+[[ Demo1 ]]
     - base.html > menu button comment out
     - favicon.ico 이름 변경
     - home.html > create login button at the bottom 
     - create user  'userone' + sngresngre
     - create superuser  
-- git add -A / git commit -m "Create demoxxxx" / git push --all 
-- in the console in pythonanywhre 
-    - rm -rf sims_project2       ##  [[ delete the whole folder ]]
-    - git clone --single-branch --branch demoxxx  https://github.com/kydkang/sims_project2.git sims_project2     [[ clone the demo branch ]]
-    - copy the db.sqlite3 from the demo branch into the pythonanywhere
 
+[[ Demo2 ]]
+    - add contributor & validator ID and password on the homepage.  
+    - add favicon
+    - add login & logout 
+    - add users (contributor, validator, superuser) 
 
 [[ Deploy 준비 ]] 
 - 셋업.py에서 랭귀지를 en으로 변경하기 
