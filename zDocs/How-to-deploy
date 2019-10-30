@@ -29,9 +29,10 @@ From the home folder [[ /home/sngreecu/ ]],  clone your repository by :
 **> cd sims_project2
 > pip install -r requirements.txt
 
+[[ db.sqlite3를 그냥 쓸꺼면 (다운로드해서), 아래 3줄은 필요 없음 ]]
 > python manage.py makemigrations
 > python manage.py migrate
-> python manage.py createsuperuser   ##################
+> python manage.py createsuperuser   
 
 Web tab > Add a new web app > manual configuration > Python version 3.7 
 
@@ -40,11 +41,11 @@ Web tab > Virtualenv > enter path   /home/sngreecu/.virtualenvs/env
 **Web tab > Code section >  /home/sngreecu/sims_project2  for both 'Source code' and 'Working directory'
 
 Web tab > under Code section, click link to WSGI configuration file
-        > modify the Django section as below  
+        > modify the Django section as below  (should start from column one)
 
     import os
     import sys
-    path = '/home/sngreecu/sims_project2'     ## ******* ##
+    path = '/home/sngreecu/sims_project2'     
     if path not in sys.path:    
         sys.path.append(path)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'sims_project.settings'
@@ -60,69 +61,28 @@ Web tab > Static files > create two rows as below
 
 Enter URL :  /static/admin 
 Enter Path :  /home/sngreecu/.virtualenvs/env/lib/python3.7/site-packages/django/contrib/admin/static/admin 
-
 Enter URL:  /static    
-** Enter Path :  /home/sngreecu/sims_project2/static
+Enter Path :  /home/sngreecu/sims_project2/static
 
 Enter the following lines in .bashrc  [[  create a new project and put a new secret key ]]
 
  export  SECRET_KEY=' ** create a new project and put a copy of secret key here** '
  export  DEBUG=""
 
-[[ To Upgrade (to sims_project33) << 작동 안함 ... 밑의 다른 방법 시도..]] 
-In your local computer, 
-    git checkout target_branch  [[ target_branch is the branch you want to deploy ]]
-    copy (create) the project to sims_project33 folder 
-    create a remote repository 'sims_project33' at GitHub    
-    in the sims_project33 folder, 
-        git remote set-url origin https://github.com/kydkang/sims_project33.git
-        git push origin master
-In pythonanywhere console, 
-    mkvirtualenv --python=python3.7 env33  
-    workon env33 
-    From the home folder (check with pwd) [[ /home/sngreecu/ ]],  clone your repository by :
-        > git clone https://github.com/kydkang/sims_project33.git
-        > cd sims_project33
-        > pip install -r requirements.txt
-        > python manage.py makemigrations
-        > python manage.py migrate
-        > python manage.py createsuperuser 
-    Web tab > Code section >  /home/sngreecu/sims_project33  for both 'Source code' and 'Working directory'
-    Web tab > Code section > click link to WSGI configuration file > modify
-        path = '/home/sngreecu/sims_project33'   
-    Web tab > Static files > modify 
-        Enter Path :  /home/sngreecu/sims_project33/static
-    Replace the db.sqlite3 file by the same file in sims_project33 folder
-    Web > Reload 
-
-[[ 다른 방법 ]]
-In your local computer, 
-    git checkout target_branch  [[ target_branch is the branch you want to deploy ]]
-    copy (create) the project to sims_project33 folder 
-    create a new remote repository 'sims_project33' at GitHub    
-    in the sims_project33 folder, 
-        git remote add origin https://github.com/kydkang/sims_project33.git
-        git push origin master
-In pythonanywhere console,        
-    workon env 
-    rm -rf sims_project2       ##  [[ delete the whole folder ]]
-    git clone https://github.com/kydkang/sims_project33.git sims_project2
-    Replace the db.sqlite3 file by the same file in local computer  
-
-[[ 다른 방법 ]]
-How do I clone a specific Git branch? 
-Clone에는   이미 git remote add origin RemoteURL 과  git pull origin master 이 실행되어 있음  
-lyw112sis에서 master branch를 올린다음  demo1 branch로 바꾸어보자 
-
-git clone --single-branch --branch <branchname> <remote-repo>
-git clone --single-branch -b 5.1-branch  https://github.com/kydkang/sims_project2.git sims_project2
-
-[[ To make Demo 1]]
-- base.html > menu button comment out
-- favicon.ico 이름 변경
-- home.html > create login button at the bottom 
-- create user  'userone' + sngresngre
-- create superuser  
+[[ To make DemoXXX]]
+- create DemoXXX branch (git branch demoxxx)
+- git checkout demoxxx 
+- modify the source for the demo 
+    - base.html > menu button comment out
+    - favicon.ico 이름 변경
+    - home.html > create login button at the bottom 
+    - create user  'userone' + sngresngre
+    - create superuser  
+- git add -A / git commit -m "Create demoxxxx" / git push --all 
+- in the console in pythonanywhre 
+    - rm -rf sims_project2       ##  [[ delete the whole folder ]]
+    - git clone --single-branch --branch demoxxx  https://github.com/kydkang/sims_project2.git sims_project2     [[ clone the demo branch ]]
+    - copy the db.sqlite3 from the demo branch into the pythonanywhere
 
 
 [[ Deploy 준비 ]] 
