@@ -19,6 +19,8 @@ In models.py,
 
 In views.py, change
   - 101 > 102 
+  - export_csv() function 
+  - ajax_calculate() function 
 
 In templates folder, change the subfolder name to sims102 
 

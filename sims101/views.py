@@ -65,6 +65,26 @@ class IndexDeleteView(PermissionRequiredMixin, DeleteView):
     model = Index101
     template_name = 'sims101/index_delete.html'
     success_url = reverse_lazy('sims101:index_list')  
+    
+
+
+import csv
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="index.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['FT', 'DT', 'PT', 'NPFD'])
+
+    indexes = Index101.objects.all().values_list('data_one', 'data_two', 'data_three', 'calculated_value')
+    for index in indexes:
+        writer.writerow(index)
+
+    return response
+
  
  # class IndexCreateView(PermissionRequiredMixin, CreateView):
 #     permission_required = ('sims101.index-contributor') 

@@ -68,10 +68,14 @@
             <div class="col-2 mr-4"> {{ form.data_three|as_crispy_field }} </div>
             <div class="col-2" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
         </div>
-        <input class="mt-3 btn btn-custom btn-outline-primary mr-4" type="submit" value="Save" />
-        <button class="mt-3 btn btn-custom btn-outline-primary" id="calculate-button" type="button"> Calculate </button>
+        <div class="row">
+            <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value="Save" />
+            <button class="mt-3 btn  btn-custom btn-outline-primary mr-4" id="calculate-button" type="button"> Calculate </button>
+        </div>
+        <div class="row mt-4">
+                <a class="col-sm-11 " href="{% url 'sims101:export_users_csv'%}"> Download all index data </a>  
+        </div>
     </form>
-</div>
 
 <script>
       $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
