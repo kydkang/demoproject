@@ -3,12 +3,14 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from commons.models import Description
 from django.shortcuts import get_object_or_404
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
 
 class Index101(models.Model):       
     SEQUENCE = '101'
     description = models.ForeignKey(Description, on_delete=models.CASCADE) 
-    data_one = models.IntegerField(_('FT'), )
-    data_two = models.IntegerField(_('DT'), )
+    data_one = models.IntegerField(_('FT'), validators=[MinValueValidator(0)])
+    data_two = models.IntegerField(_('DT'), validators=[MinValueValidator(0)])
     data_three = models.IntegerField(_('PT'), )
     calculated_value = models.DecimalField(_('NPFD'), max_digits=7, decimal_places=2, blank=True, )
  
@@ -20,7 +22,11 @@ class Index101(models.Model):
         ordering = ['id'] 
 
     def calculate(self):         ##  also need to change  ajax_calculate() function 
-        return ((self.data_one + self.data_two) / self.data_three ) * 100000
+        try:
+          calc_value = (self.data_one + self.data_two) / self.data_three * 100000
+        except:
+            print("An exception occurred")
+        return calc_value
 
     def save(self, *args, **kwargs):
         self.calculated_value =  self.calculate() 
@@ -30,6 +36,10 @@ class Index101(models.Model):
 
     def __str__(self):
         return str(self.data_one) + ",    " + str(self.data_two)
+
+    def clean(self):
+        if self.data_one > self.data_three or self.data_two > self.data_three: 
+            raise ValidationError(_('Entered numbers are not correct.  Try again.'))
 
     # def get_absolute_url(self):
     #     # or  return reverse('sims101:index_detail', args=[str(self.id)])

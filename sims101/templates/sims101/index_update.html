@@ -1,9 +1,83 @@
 {% extends 'base.html' %}
+
+
+
 {% block content %}
     <h3 class="my-3">Edit post</h3>
+
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="btn btn-sm btn-info" value="Update" />
     </form>
 {% endblock %}
+
+
+{% comment %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt-4">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    
+            {% if form.errors %}
+                <p> Your username and password didn't match. Please try again.  </p>
+            {% endif %}
+    </div>
+        <form method="post" action="">  <!--  https://overiq.com/django-1-11/django-rendering-form-fields-manually/  -->
+          {% csrf_token %}
+          <div class="row"> 
+            <div class="col-2"> Data One </div>
+            <div class="col-2 ml-auto">
+                {{ form.data_one.errors }}
+                {{ form.data_one }}     
+            </div>
+            <div class="col-8">
+              {% if form.data_one.help_text %}
+                {{ form.data_one.help_text }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="row mt-4"> 
+            <div class="col-2"> Data Two </div>
+            <div class="col-2 ml-auto">
+                {{ form.data_two.errors }}
+                {{ form.data_two }} 
+            </div>
+            <div class="col-8">
+              {% if form.data_two.help_text %}
+                {{ form.data_two.help_text }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="row mt-4"> 
+                <div class="col-2"> Data three </div>
+                <div class="col-2 ml-auto">
+                    {{ form.data_three.errors }}
+                    {{ form.data_three }} 
+                </div>
+                <div class="col-8">
+                  {% if form.data_three.help_text %}
+                    {{ form.data_three.help_text }}
+                  {% endif %}
+                </div>
+            </div>
+          <div class="row mt-4">
+              <div class="col-2"></div>
+            <div class="col-2 ml-auto">
+                <input type="submit" value="Submit" class="btn btn-outline-info">
+            </div>
+            <div class="col-8"></div>
+          </div>
+        </form>  
+    
+</div>
+{% endblock %}
+{% endcomment %}
+
+    

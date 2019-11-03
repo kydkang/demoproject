@@ -10,6 +10,7 @@ from decimal import Decimal
 from .models import Index101
 from .forms import IndexForm 
 from commons.models import Description
+from django.contrib import messages
 
 @permission_required('sims101.index101_contributor')
 def IndexListView(request):
@@ -59,6 +60,27 @@ class IndexUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = IndexForm
     template_name = 'sims101/index_update.html'
     success_url = reverse_lazy('sims101:index_list')  
+
+# @permission_required('sims101.index101_validator')
+# def IndexUpdateView(request, pk): 
+
+#     obj = get_object_or_404(Index101, pk=pk)
+
+#     form = IndexForm(request.POST or None, instance=obj)
+    
+#     if form.is_valid():              
+#         # obj = form.save(commit=False)
+#         object = obj.save()
+#         context = {'form':form, 'object':object}
+#         messages.success(request, "You successfully updated the index")
+#         return render(request, 'sims101/index_update.html', context)
+
+#     context = {'form':form, 'error':'The form was not updated successfully. Please enter values again.'}
+#     return render(request, 'sims101/index_update.html', context)
+
+
+
+
 
 class IndexDeleteView(PermissionRequiredMixin, DeleteView):
     permission_required = ('sims101.index101_validator')    
