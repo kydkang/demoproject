@@ -72,9 +72,11 @@
             <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value="Save" />
             <button class="mt-3 btn  btn-custom btn-outline-primary mr-4" id="calculate-button" type="button"> Calculate </button>
         </div>
+        {% comment %}
         <div class="row mt-4">
                 <a class="col-sm-11 " href="{% url 'sims101:export_users_csv'%}"> Download all index data </a>  
         </div>
+        {% endcomment %}
     </form>
 
 <script>
