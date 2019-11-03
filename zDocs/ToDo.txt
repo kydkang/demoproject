@@ -1,13 +1,11 @@
 
-•	lyw112sis에서 master branch를 올린다음  demo1 branch로 바꾸어보자 
+Download 시 엑셀파일에서 comma 없이 입력되는지 확인 
 
-Delete 화면에서 cancel 버튼 추가
-Edit 화면에서 calculate 버튼 추가 
 
-•	Download the saved indexes 
+Download the saved indexes 
 
-•	Query the database based on fixed set of variables
-
+Query the database based on fixed set of variables
+    [[ dj2ByEx - chapter 3 ]]
 
 
 database의 SEQUENCE 없앨 수 없나? 

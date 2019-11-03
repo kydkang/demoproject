@@ -1,7 +1,7 @@
-[[ Tango with Django ]]
 
 
-[[ For Initial Deployment ]]
+
+[[ For Initial Deployment ]]  [[ Tango with Django ]]
 In settings.py, modify as follows: 
 
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '8#0q@*y)8-69kxan2jci5d(mb0f&o11-6(rm&y4rrvpg-63@0c')
@@ -14,37 +14,35 @@ Then commit and push to git remote repository
 Create a pythonanywhere account > sngreecu@sngre123ecu 
 
 Open a bash console in the pythonanywhere and enter 
-  mkvirtualenv --python=python3.7 env     [[ to remove >> rmvirtualenv env ]] 
-
+  > mkvirtualenv --python=python3.7 env     [[ to remove >> rmvirtualenv env ]] 
 You can see that a directory called .virtualenvs has been created (ls -al)
 This is the directory in which all of your virtual environments and associated packages will be stored.
 
-nano .bashrc and enter  'source virtualenvwrapper.sh'  << already in there. no need to do
+(nano .bashrc and enter  'source virtualenvwrapper.sh'  << already in there. no need to do)
 
 Launch virtual env >>> workon env
    (to deactivate virtual env >> deactivate)   
 
 From the home folder [[ /home/sngreecu/ ]],  clone your repository by :
-**> git clone https://github.com/kydkang/sims_project2.git
-**> cd sims_project2
+> git clone https://github.com/kydkang/demoproject.git
+> cd demoproject 
 > pip install -r requirements.txt
 
+[[ db.sqlite3를 그냥 쓸꺼면 (다운로드해서), 아래 3줄은 필요 없음 ]]
 > python manage.py makemigrations
 > python manage.py migrate
-> python manage.py createsuperuser   ##################
+> python manage.py createsuperuser   
 
 Web tab > Add a new web app > manual configuration > Python version 3.7 
-
 Web tab > Virtualenv > enter path   /home/sngreecu/.virtualenvs/env
-
-**Web tab > Code section >  /home/sngreecu/sims_project2  for both 'Source code' and 'Working directory'
+Web tab > Code section >  /home/sngreecu/demoproject  for both 'Source code' and 'Working directory'
 
 Web tab > under Code section, click link to WSGI configuration file
-        > modify the Django section as below  
+        > modify the Django section as below  (should start from column one)
 
     import os
     import sys
-    path = '/home/sngreecu/sims_project2'     ## ******* ##
+    path = '/home/sngreecu/demoproject'     
     if path not in sys.path:    
         sys.path.append(path)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'sims_project.settings'
@@ -60,69 +58,44 @@ Web tab > Static files > create two rows as below
 
 Enter URL :  /static/admin 
 Enter Path :  /home/sngreecu/.virtualenvs/env/lib/python3.7/site-packages/django/contrib/admin/static/admin 
-
 Enter URL:  /static    
-** Enter Path :  /home/sngreecu/sims_project2/static
+Enter Path :  /home/sngreecu/demoproject/static
 
 Enter the following lines in .bashrc  [[  create a new project and put a new secret key ]]
 
  export  SECRET_KEY=' ** create a new project and put a copy of secret key here** '
  export  DEBUG=""
 
-[[ To Upgrade (to sims_project33) << 작동 안함 ... 밑의 다른 방법 시도..]] 
-In your local computer, 
-    git checkout target_branch  [[ target_branch is the branch you want to deploy ]]
-    copy (create) the project to sims_project33 folder 
-    create a remote repository 'sims_project33' at GitHub    
-    in the sims_project33 folder, 
-        git remote set-url origin https://github.com/kydkang/sims_project33.git
-        git push origin master
-In pythonanywhere console, 
-    mkvirtualenv --python=python3.7 env33  
-    workon env33 
-    From the home folder (check with pwd) [[ /home/sngreecu/ ]],  clone your repository by :
-        > git clone https://github.com/kydkang/sims_project33.git
-        > cd sims_project33
-        > pip install -r requirements.txt
-        > python manage.py makemigrations
-        > python manage.py migrate
-        > python manage.py createsuperuser 
-    Web tab > Code section >  /home/sngreecu/sims_project33  for both 'Source code' and 'Working directory'
-    Web tab > Code section > click link to WSGI configuration file > modify
-        path = '/home/sngreecu/sims_project33'   
-    Web tab > Static files > modify 
-        Enter Path :  /home/sngreecu/sims_project33/static
-    Replace the db.sqlite3 file by the same file in sims_project33 folder
-    Web > Reload 
+[[ To make demoX ]]
+- in the local computer 
+    - git branch demoX     [[ create DemoXXX branch ]] 
+    - git checkout demoX
+    - modify the source for the demo 
+    - git add -A / git commit -m "Create demoX" / git push --all 
 
-[[ 다른 방법 ]]
-In your local computer, 
-    git checkout target_branch  [[ target_branch is the branch you want to deploy ]]
-    copy (create) the project to sims_project33 folder 
-    create a new remote repository 'sims_project33' at GitHub    
-    in the sims_project33 folder, 
-        git remote add origin https://github.com/kydkang/sims_project33.git
-        git push origin master
-In pythonanywhere console,        
-    workon env 
-    rm -rf sims_project2       ##  [[ delete the whole folder ]]
-    git clone https://github.com/kydkang/sims_project33.git sims_project2
-    Replace the db.sqlite3 file by the same file in local computer  
+- in the console in pythonanywhre 
+    - rm -rf sims_project2       ##  [[ delete the whole folder ]]
+    - git clone --single-branch --branch demoX  https://github.com/kydkang/sims_project2.git sims_project2     [[ clone the demo branch ]]
+    - copy the db.sqlite3 from the demo branch into the pythonanywhere
 
-[[ 다른 방법 ]]
-How do I clone a specific Git branch? 
-Clone에는   이미 git remote add origin RemoteURL 과  git pull origin master 이 실행되어 있음  
-lyw112sis에서 master branch를 올린다음  demo1 branch로 바꾸어보자 
+[[ Demo1 ]]
+    - add index
+    - delete index
+    - edit index  
+    - login 
 
-git clone --single-branch --branch <branchname> <remote-repo>
-git clone --single-branch -b 5.1-branch  https://github.com/kydkang/sims_project2.git sims_project2
+[[ Demo2 ]]
+    - add contributor & validator ID and password on the homepage.  
+    - add favicon
+    - add login & logout (base.html > menu button,  remove login button in home.html)
+    - add users (contributor, validator, superuser) 
+    - reflect the first index to "Número de personas fallecidas y desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A1)"
 
-[[ To make Demo 1]]
-- base.html > menu button comment out
-- favicon.ico 이름 변경
-- home.html > create login button at the bottom 
-- create user  'userone' + sngresngre
-- create superuser  
+[[ Demo3 ]]
+    - Delete 화면에서 cancel 버튼 추가
+    - Edit 화면에서 calculate 버튼 추가 
+    - File download 
+    - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
 
 
 [[ Deploy 준비 ]] 
