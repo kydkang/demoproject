@@ -5,9 +5,9 @@
     <div class="card">
       <h5 class="card-header">Gestión de la Información </h5>
       <div class="card-body">
-        <p class="card-text"> Augue nibh eu non nam aliquam aenean, sit in arcu phasellus laboris. Amet ligula metus.</p>
+        <p class="card-text"> In aliquet, enim et consequat vestibulum, felis dolor facilisis sem, a ornare velit augue in lorem. Aenean tortor turpis, egestas eu ante non, rhoncus congue magna. </p>
         {% if user.is_authenticated %}
-        <li class="list-group-item mb-2"><a href="101/"> IndexName101 </a> </li>
+        <li class="list-group-item mb-2"><a href="101/"> Número de personas desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A3) </a> </li>
         <li class="list-group-item"><a href=""> IndexName102 </a> </li>
         {% endif %}
       </div>
@@ -41,6 +41,19 @@
     <a href="{% url 'register' %}" class="btn btn-info mt-3 home-btn"> register </a>  
   {% endif %}
   {% endcomment %}
+
+
+<footer class="footer mt-4 py-3">
+
+      <h6 class="">There are two roles for each index:  contributor and validator</h6>
+      <div class="text-muted">Contributor User Name : con123  </div>
+      <div class="text-muted">Contributor Password:  sngresngre</div>
+      <div class="text-muted mt-2">Validator User Name : val123</div>
+      <div class="text-muted">Validator Password: sngresngre</div>
+    
+  </footer>
+
+
 
 {% endblock content %}
 

@@ -89,7 +89,7 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - add favicon
     - add login & logout (base.html > menu button,  remove login button in home.html)
     - add users (contributor, validator, superuser) 
-    - reflect the first index to "Número de personas fallecidas y desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A1)"
+    - put the correct index name and description for index101 
 
 [[ Demo3 ]]
     - Delete 화면에서 cancel 버튼 추가
