@@ -97,6 +97,8 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - File download 
     - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
 
+[[ Demo4 ]]
+    - left column Navigator 
 
 [[ Deploy 준비 ]] 
 - 셋업.py에서 랭귀지를 en으로 변경하기 
