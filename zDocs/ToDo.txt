@@ -1,4 +1,4 @@
-
+   demo3
 django update 기능  function view로 구현 방법 
 
 - Delete 화면에서 cancel 버튼 추가
