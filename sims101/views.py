@@ -90,21 +90,35 @@ class IndexDeleteView(PermissionRequiredMixin, DeleteView):
     
 
 
-import csv
+import xlwt
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+# https://simpleisbetterthancomplex.com/tutorial/2016/07/29/how-to-export-to-excel.html
 
-def export_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="index.csv"'
+def export_xls(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="index.xls"'
 
-    writer = csv.writer(response)
-    writer.writerow(['FT', 'DT', 'PT', 'NPFD'])
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Index')
 
-    indexes = Index101.objects.all().values_list('data_one', 'data_two', 'data_three', 'calculated_value')
-    for index in indexes:
-        writer.writerow(index)
+    row_num = 0 
 
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['FT', 'DT', 'PT', 'NPFD']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+    
+    font_style = xlwt.XFStyle()
+    rows = Index101.objects.all().values_list('data_one', 'data_two', 'data_three', 'calculated_value')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+    
+    wb.save(response)
     return response
 
  
