@@ -36,21 +36,19 @@
         <div class="col-10">  <hr> </div>
         <div class="row mt-0">
             <div class="col-sm-2 text-center">    FT </div>
-            <div class="col-sm-2 text-center">    DT </div>
             <div class="col-sm-2 text-center">    PT </div>
-            <div class="col-sm-2 text-center">    NPFD </div>
+            <div class="col-sm-2 text-center">    NF </div>
         </div>
         <div class="col-10">  <hr> </div>
         {% for index in object_list %}
             <div class="row mt-3">
                 <div class="col-sm-2 text-center">{{ index.data_one }}</div>
                 <div class="col-sm-2 text-center">{{ index.data_two }}</div>
-                <div class="col-sm-2 text-center">{{ index.data_three }}</div>
                 <div class="col-sm-2 text-center">{{ index.calculated_value }}</div>
-                {% if 'sims101.index101_validator' in perms %}
+                {% if 'sims102.index102_validator' in perms %}
                     <div class="col-sm-3 ">
-                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete "> Edit </a> 
-                        <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                        <a href="{% url 'sims102:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete "> Edit </a> 
+                        <a href="{% url 'sims102:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
                     </div>
                 {% endif %}
             </div>
@@ -59,13 +57,12 @@
 
     <h6 class="mt-4"> New Index Data </h6>
     {{ form.non_field_errors }}
-    <form action="{% url 'sims101:index_list' %}" method="POST">
+    <form action="{% url 'sims102:index_list' %}" method="POST">
         {% csrf_token %}
         <div class="row">
             {{ form.non_field_errors }}
             <div class="col-2 mr-4"> {{ form.data_one|as_crispy_field }} </div>
             <div class="col-2 mr-4"> {{ form.data_two|as_crispy_field }} </div>
-            <div class="col-2 mr-4"> {{ form.data_three|as_crispy_field }} </div>
             <div class="col-2" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
         </div>
         <div class="row">
@@ -74,7 +71,7 @@
         </div>
         {% comment %}
         <div class="row mt-4">
-                <a class="col-sm-11 " href="{% url 'sims101:export_users_csv'%}"> Download all index data </a>  
+                <a class="col-sm-11 " href="{% url 'sims102:export_users_csv'%}"> Download all index data </a>  
         </div>
         {% endcomment %}
     </form>
@@ -82,16 +79,14 @@
 <script>
       $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
       // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
-      var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
+      var url = "/102/ajax/calculate/";  // get the selected event ID from the HTML input
       var data_one = $("#id_data_one").val(); 
       var data_two = $("#id_data_two").val();  
-      var data_three = $("#id_data_three").val(); 
       $.ajax({                // initialize an AJAX request
         url: url,              // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
         data: {
             'data_one': data_one, 
             'data_two': data_two, 
-            'data_three': data_three,
         },
         success: function (data) {   // `data` is the return value of the `load_cities` view function
           $("#calculated_value").html(data);   // replace the contents of dropdown list 
@@ -102,7 +97,7 @@
 
 <script>
     if ( {{ request.session.created }} ) {   // reset the 'create' value to false 
-        var url = "/101/ajax/change_session/" 
+        var url = "/102/ajax/change_session/" 
         $.ajax({
             url: url,
             data: { },

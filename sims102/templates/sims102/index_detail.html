@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% comment %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-xs-3 col-sm-2 text-center">Data1</th>
+                    <th class="col-xs-3 col-sm-2 text-center">Data2</th>
+                    <th class="col-xs-3 col-sm-2 text-center">Index123</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row">
+                    <td class="col-xs-3 col-sm-2 text-center">{{ object.data_one }}</td>
+                    <td class="col-xs-3 col-sm-2 text-center">{{ object.data_two }}</td>
+                    <td class="col-xs-3 col-sm-2 text-center">{{ object.calculated_value }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-borderless">
+            <tbody>
+                <tr class ="row">
+                    <td class="col-xs-3 "><a href="{% url 'sims101:index_update' object.pk %}" class="btn btn-custom btn-primary "> Edit </a> </td>
+                    <td class="col-xs-3 "><a href="{% url 'sims101:index_delete' object.pk %}" class="btn btn-custom btn-info "> Delete</a> </td>
+                    <td class="col-xs-3 mr-auto"><a href="{% url 'sims101:index_list' %}" class="btn btn-custom btn-info "> Go to list</a> </td>
+                </tr>
+            </tbody> 
+        </table> 
+    </div>
+
+{% endblock content %}
+
+{% endcomment %}

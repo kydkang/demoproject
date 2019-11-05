@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sims101', 
+    'sims102', 
     'crispy_forms', 
     'commons', 
     'xlwt', 

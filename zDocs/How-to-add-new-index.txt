@@ -8,18 +8,18 @@ Change the folder name to sims102
 In settings.py, add 'sims102' to INSTALLED_APPS
 
 In urls.py (project-level), add path('102/', include('sim102.urls')) 
-In urls.py (app-level of sims102), change app_name to sims102
-in apps.py, change the name 
+In urls.py (app-level of sims102), change app_name to 'sims102'
+in apps.py, change the name to 'sims102'
 In admin.py, 
   - 101 > 102
 In models.py,  
   - 101 > 102 
   - modify data fields
-  - modify functions (calculate, __str__)
+  - modify functions (calculate, save, clean, __str__)
 
 In views.py, change
   - 101 > 102 
-  - export_csv() function 
+  - export_xls() function 
   - ajax_calculate() function 
 
 In templates folder, change the subfolder name to sims102 
@@ -30,14 +30,26 @@ In index_list.html
   - change column data 
   - in ajax script, change form field name 
 
+In index_update.html
+  - 101 > 102 
+  - update columns 
+
+In index_delete.html
+  - 101 > 102 
+
+calculated_value.html
+  - change column head 
+
 In forms.py
-  - Index102
-  - change fields
+  - 101 > 102
+  - fields
 
 Execute   python manage.py makemigrations sims102
           python manage.py migrate sims102 
 
 python manage.py runserver
+
+For admin permission, create a superuser (python manage.py createsuperuser) 
 
 Go to 127.0.0.1/admin 
   - create a new record for the description table (sequence, index_name, description, ...)
@@ -46,9 +58,9 @@ Go to 127.0.0.1/admin
 << Roles and Permissions >> 
 
 If adding a new user to depttwo, 
-  - create a user, and add index102_contributor and/or index102_validator for each index
-  - contributer << add index102_contributor
-  - validator << add index102_contributer and index1102_validator 
+  - create two users (102val and 102con), and add index102_contributor and/or index102_validator for each index
+  - 102con << add index102_contributor
+  - 102val << add index102_contributer and index1102_validator 
 [[  validator can edit and delete index data ]] 
 
-For admin permission, create a superuser (python manage.py createsuperuser) 
+
