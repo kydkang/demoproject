@@ -1,8 +1,6 @@
 
 django update 기능  function view로 구현 방법 
 
-Download 시 엑셀파일에서 comma 없이 입력되는지 확인 
-
 - Delete 화면에서 cancel 버튼 추가
 - Edit 화면에서 calculate 버튼 추가 
 

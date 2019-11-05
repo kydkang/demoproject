@@ -131,7 +131,7 @@ LOGIN_REDIRECT_URL = 'home'    # place to go after login  if no "next" parameter
 LOGIN_URL = 'login'            # The URL to redirect the user to log in 
 LOGOUT_URL = 'logout'          # The URL to redirect the user to log out
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Static files (CSS, JavaScript, Images)

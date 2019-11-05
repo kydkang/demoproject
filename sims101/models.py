@@ -35,7 +35,7 @@ class Index101(models.Model):
         super(Index101, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.data_one) + ",    " + str(self.data_two)
+        return str(self.data_one) + ",    " + str(self.data_two) + ",    " + str(self.data_three)
 
     def clean(self):
         if self.data_one > self.data_three or self.data_two > self.data_three: 

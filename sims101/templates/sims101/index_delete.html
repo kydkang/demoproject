@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3> Delete post </h3>
+    <h3 class="mt-4"> Delete post </h3>
     <form action="" method="post">
         {% csrf_token %}
-        <p> Are you sure you want to delete the data of {{ object }} ? </p>
-        <input type="submit" value="Confirm" />
+        <p class="mt-4"> Are you sure you want to delete the data of {{ object }} ? </p>
+
+        <div class="row mt-4">
+            <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value="Confirm" />
+            <a class="mt-3 btn btn-custom  btn-outline-primary mr-4" href="{% url 'sims101:index_list'%}"> Cancel </a>  
+        </div>
+
+
     </form>
 {% endblock %}
 

@@ -94,10 +94,11 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 [[ Demo3 ]]
     - Index102 
     - Delete 화면에서 cancel 버튼 추가
-    - Edit 화면에서 calculate 버튼 추가 
+    - Edit 화면에서 cancel 버튼 추가 
 
 
 [[ Demo4 ]]
+    - Edit 화면에서 calculate 버튼 추가 
     - left column Navigator 
     - File download 
     - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
@@ -117,4 +118,4 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
    : index_list.html의 script에서 
          window.location.href = "{{ request.path }}"; 라인을 아래 라인으로 변경
         // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
-   --> ConnectionAbortedError: [WinError 10053] 에러 발생하지면 표면적으로는 잘 구동함 
+   --> ConnectionAbortedError: [WinError 10053] 에러 발생하지만 표면적으로는 잘 구동함 
