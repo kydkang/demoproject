@@ -44,7 +44,7 @@ def IndexListView(request):
 
 def ajax_change_session(request):  
     request.session['created'] = ""
-    return render(request, 'sims101/index_delete.html') 
+    return render(request, 'sims101/index_delete.html')  ## index_delete.html is not used..
 
 def ajax_calculate(request):     ###  must be the same as 'calculate' function  in model.py 
     data_one = int(request.GET.get('data_one'))

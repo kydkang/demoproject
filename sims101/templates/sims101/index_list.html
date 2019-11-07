@@ -49,9 +49,11 @@
                 <div class="col-sm-2 text-center">{{ index.calculated_value }}</div>
                 {% if 'sims101.index101_validator' in perms %}
                     <div class="col-sm-3 ">
-                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a> 
-                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
-                        <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                        {% if not index.validated  %}
+                            <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a> 
+                            <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
+                            <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                        {% endif %}
                     </div>
                 {% else %}
                     <div class="col-sm-3" id="contributor-buttons">
@@ -87,9 +89,9 @@
         {% endcomment %}
     </form>
 
+<!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
       $(".validate-button").click(function () {   
-        alert("Hola");
         var index_id = $(this).attr("data-index-id");   
         var url = "/101/ajax/validated/"; 
         $.ajax({
@@ -101,17 +103,12 @@
                 $("#contributor-buttons").html(data);
              }
         }); 
-        alert(index_id); 
-        // redirect to the last page 
-        window.location.href = "{{ request.path }}"; 
-        // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
     }); 
 </script>  
 
 <script>
       $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
       // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
-      alert("Hola123");
       var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
       var data_one = $("#id_data_one").val(); 
       var data_two = $("#id_data_two").val();  
@@ -130,8 +127,9 @@
     });
 </script>  
 
+<!-- This is for pagination (to redirect to the last page) :  reset the 'create' session value to false  -->
 <script>
-    if ( {{ request.session.created }} ) {   // reset the 'create' value to false 
+    if ( {{ request.session.created }} ) {   
         var url = "/101/ajax/change_session/" 
         $.ajax({
             url: url,
