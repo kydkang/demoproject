@@ -58,7 +58,6 @@ def ajax_validated(request):
     index_id = int(request.GET.get('index_id')) 
     target =  get_object_or_404(Index101, id=index_id)
     target.validated=True
-    print(target.validated)
     target.save()
     return render(request, 'sims101/validated.html') 
 

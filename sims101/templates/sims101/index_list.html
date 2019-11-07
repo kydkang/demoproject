@@ -48,7 +48,7 @@
                 <div class="col-sm-2 text-center">{{ index.data_three }}</div>
                 <div class="col-sm-2 text-center">{{ index.calculated_value }}</div>
                 {% if 'sims101.index101_validator' in perms %}
-                    <div class="col-sm-3 ">
+                    <div class="col-sm-3 " id="button-set" data-validate-url="{% url 'sims101:ajax_validated' %}">
                         {% if not index.validated  %}
                             <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a> 
                             <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
@@ -78,7 +78,7 @@
             <div class="col-2 mr-4"> {{ form.data_three|as_crispy_field }} </div>
             <div class="col-2" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
         </div>
-        <div class="row">
+        <div class="row" >
             <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value="Save" />
             <button class="mt-3 btn  btn-custom btn-outline-primary mr-4" id="calculate-button" type="button"> Calculate </button>
         </div>
@@ -92,8 +92,9 @@
 <!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
       $(".validate-button").click(function () {   
-        var index_id = $(this).attr("data-index-id");   
-        var url = "/101/ajax/validated/"; 
+        var index_id = $(this).attr("data-index-id");  
+        var url = $("#button-set").attr("data-validate-url"); 
+        // var url = "/101/ajax/validated/"; 
         $.ajax({
             url: url,
             data: { 
@@ -127,7 +128,7 @@
     });
 </script>  
 
-<!-- This is for pagination (to redirect to the last page) :  reset the 'create' session value to false  -->
+<!-- This is for pagination (if a new record is added, redirect to the last page and reset the 'create' session value to false)  -->
 <script>
     if ( {{ request.session.created }} ) {   
         var url = "/101/ajax/change_session/" 
