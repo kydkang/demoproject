@@ -34,7 +34,8 @@ class Index102(models.Model):
         super(Index102, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.data_one) + ",    " + str(self.data_two) 
+        return 'FT:{}, PT:{}'.format(self.data_one, self.data_two)
+
 
     def clean(self):
         if self.data_one > self.data_two: 

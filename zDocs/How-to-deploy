@@ -98,13 +98,14 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 
 
 [[ Demo4 ]]
-    - Edit 화면에서 calculate 버튼 추가 
+    - translation 
     - left column Navigator 
     - File download 
     - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
     - password change 
     - pagination 
-    - translation 
+    - Edit 화면에서 calculate 버튼 추가 
+
 
 
 [[ Deploy 준비 ]] 
