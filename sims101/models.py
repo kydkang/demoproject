@@ -13,7 +13,8 @@ class Index101(models.Model):
     data_two = models.IntegerField(_('DT'), validators=[MinValueValidator(0)])
     data_three = models.IntegerField(_('PT'), )
     calculated_value = models.DecimalField(_('NPFD'), max_digits=7, decimal_places=2, blank=True, )
- 
+    validated = models.BooleanField(default=False) 
+    
     class Meta:
         permissions = [
             ("index101_contributor", "index101_contributor"), 

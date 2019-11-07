@@ -11,6 +11,7 @@ urlpatterns = [
     path('data/<int:pk>/delete', views.IndexDeleteView.as_view(), name='index_delete'), 
     path('ajax/change_session/', views.ajax_change_session, name='ajax_change_session'),  
     path('ajax/calculate/', views.ajax_calculate, name='ajax_calculate'), 
+    path('ajax/validated/', views.ajax_validated, name='ajax_validated'), 
     path('export/csv/', views.export_xls, name='export_users_csv'), 
 
 ]

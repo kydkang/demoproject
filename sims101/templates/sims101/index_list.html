@@ -42,15 +42,23 @@
         </div>
         <div class="col-10">  <hr> </div>
         {% for index in object_list %}
-            <div class="row mt-3">
+            <div class="row mt-3" >
                 <div class="col-sm-2 text-center">{{ index.data_one }}</div>
                 <div class="col-sm-2 text-center">{{ index.data_two }}</div>
                 <div class="col-sm-2 text-center">{{ index.data_three }}</div>
                 <div class="col-sm-2 text-center">{{ index.calculated_value }}</div>
                 {% if 'sims101.index101_validator' in perms %}
                     <div class="col-sm-3 ">
-                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete "> Edit </a> 
+                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a> 
+                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
                         <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                    </div>
+                {% else %}
+                    <div class="col-sm-3" id="contributor-buttons">
+                        {% if not index.validated  %}
+                            <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete "> Edit </a> 
+                            <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>
@@ -80,8 +88,30 @@
     </form>
 
 <script>
+      $(".validate-button").click(function () {   
+        alert("Hola");
+        var index_id = $(this).attr("data-index-id");   
+        var url = "/101/ajax/validated/"; 
+        $.ajax({
+            url: url,
+            data: { 
+                'index_id': index_id, 
+            },
+            success: function (data) {
+                $("#contributor-buttons").html(data);
+             }
+        }); 
+        alert(index_id); 
+        // redirect to the last page 
+        window.location.href = "{{ request.path }}"; 
+        // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
+    }); 
+</script>  
+
+<script>
       $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
       // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
+      alert("Hola123");
       var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
       var data_one = $("#id_data_one").val(); 
       var data_two = $("#id_data_two").val();  

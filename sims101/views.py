@@ -54,6 +54,14 @@ def ajax_calculate(request):     ###  must be the same as 'calculate' function  
     calculated_value = format(calculated_value, '.2f')
     return render(request, 'sims101/calculated_value.html', {'calculated_value':calculated_value})
 
+def ajax_validated(request): 
+    index_id = int(request.GET.get('index_id')) 
+    target =  get_object_or_404(Index101, id=index_id)
+    target.validated=True
+    print(target.validated)
+    target.save()
+    return render(request, 'sims101/validated.html') 
+
 class IndexUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = ('sims101.index101_validator') 
     model = Index101
