@@ -96,8 +96,8 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - Delete 화면에서 cancel 버튼 추가
     - Edit 화면에서 cancel 버튼 추가 
 
-
 [[ Demo4 ]]
+    - Validate button 추가 
     - translation 
     - left column Navigator 
     - File download 
