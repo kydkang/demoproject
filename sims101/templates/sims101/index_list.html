@@ -54,7 +54,7 @@
                             <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
                             <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
                         {% endif %}
-                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete expand-button" data-index-id="{{ index.id }}"> Expand </a> 
+                        <a href="" onclick="return false;" class="btn btn-sm btn-outline-primary btn-editdelete expand-button" data-index-id="{{ index.id }}"> Expand </a> 
                     </div>
                 {% else %}
                     <div class="col-sm-3" id="contributor-buttons">
@@ -124,6 +124,7 @@
                   $("#contributor-buttons").html(data);
                }
           }); 
+          window.location.href = "{{ request.path }}"; 
       }); 
   </script>  
   
