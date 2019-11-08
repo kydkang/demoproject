@@ -1,0 +1,22 @@
+[
+{
+  "model": "sims102.index102",
+  "pk": 2,
+  "fields": {
+    "description": 3,
+    "data_one": 78,
+    "data_two": 66777,
+    "calculated_value": "116.81"
+  }
+},
+{
+  "model": "sims102.index102",
+  "pk": 3,
+  "fields": {
+    "description": 3,
+    "data_one": 5,
+    "data_two": 55,
+    "calculated_value": "9090.91"
+  }
+}
+]

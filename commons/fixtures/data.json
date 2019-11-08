@@ -1,12 +1,22 @@
 [
 {
   "model": "commons.description",
-  "pk": 1,
+  "pk": 2,
   "fields": {
     "sequence": "101",
     "department": "An\u00e1lisis de Riesgos",
-    "index_name": "index Name \uac15\uac15",
-    "description": "Pellentesque dolor libero, ullamcorper et vulputate non, feugiat ut turpis. Aenean volutpat lorem sed nunc vehicula gravida. Praesent dapibus pulvinar ex, sed luctus ligula sagittis eu. Donec nibh libero, varius in imperdiet eget, facilisis in dolor. Pellentesque posuere, odio non venenatis ultrices, eros libero ultrices lacus, tempus sollicitudin lorem nulla vitae massa. Praesent molestie nunc eget pellentesque cursus. Integer et lacus egestas, dapibus diam a, porta ex. Nulla sed vehicula orci. Suspendisse condimentum quis est eget aliquet.\r\n\r\nNunc vel purus consequat, porta mi vitae, pretium odio. Nullam posuere odio convallis velit scelerisque, et hendrerit mi mollis. Praesent velit justo, pulvinar vel ante vel, pharetra iaculis magna. Nunc odio lectus, fermentum sit amet ipsum a, pellentesque porttitor leo. In risus tortor, scelerisque vel nibh sit amet, egestas convallis mi. Nunc eu sodales tortor, at accumsan nibh. Cras ante mi, tristique non aliquet eu, ornare non tortor."
+    "index_name": "N\u00famero de personas fallecidas y desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A1)",
+    "description": "Este indicador se define como la relaci\u00f3n existente entre el n\u00famero total de personas fallecidas y personas desaparecidas, por desastres por cada 100.000 personas con respecto al total de la poblaci\u00f3n en un mismo periodo."
+  }
+},
+{
+  "model": "commons.description",
+  "pk": 3,
+  "fields": {
+    "sequence": "102",
+    "department": "Gesti\u00f3n de la Informaci\u00f3n",
+    "index_name": "N\u00famero de personas fallecidas atribuido a los desastres, por cada 100.000 habitantes. (A2)",
+    "description": "Este indicador se define como la relaci\u00f3n existente entre el n\u00famero total personas fallecidas por desastres por cada 100.000 personas con respecto al total de la poblaci\u00f3n en un mismo periodo."
   }
 }
 ]

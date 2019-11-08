@@ -1,0 +1,38 @@
+[
+{
+  "model": "sims101.index101",
+  "pk": 26,
+  "fields": {
+    "description": 2,
+    "data_one": 2,
+    "data_two": 776,
+    "data_three": 66666,
+    "calculated_value": "1167.01",
+    "validated": false
+  }
+},
+{
+  "model": "sims101.index101",
+  "pk": 29,
+  "fields": {
+    "description": 2,
+    "data_one": 7,
+    "data_two": 77,
+    "data_three": 77777,
+    "calculated_value": "108.00",
+    "validated": true
+  }
+},
+{
+  "model": "sims101.index101",
+  "pk": 31,
+  "fields": {
+    "description": 2,
+    "data_one": 99,
+    "data_two": 99,
+    "data_three": 767980,
+    "calculated_value": "25.78",
+    "validated": true
+  }
+}
+]
