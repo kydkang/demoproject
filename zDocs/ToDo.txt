@@ -10,7 +10,7 @@ Query the database based on fixed set of variables
     [[ dj2ByEx - chapter 3 ]]
 
 
-database의 SEQUENCE 없앨 수 없나? 
+database의 SEQUENCE 없앨 수 없나?  
 
 Description Table CRUD views
 

@@ -42,9 +42,14 @@ class Index101(models.Model):
         if self.data_one > self.data_three or self.data_two > self.data_three: 
             raise ValidationError(_('Entered numbers are not correct.  Try again.'))
 
-    # def get_absolute_url(self):
-    #     # or  return reverse('sims101:index_detail', args=[str(self.id)])
-    #     return reverse('sims101:index_detail', kwargs={'pk': str(self.id)})
-
-
+class Index101Data(models.Model):  
+    yearly = models.ForeignKey(Index101, on_delete=models.SET_NULL, null=True, related_name="backdata" )   
+    province = models.CharField(_('Province'), max_length=6)
+    canton = models.CharField(_('Canton'), max_length=6)
+    parroquia = models.CharField(_('Parroquia'), max_length=6)
+    code = models.CharField(_('CODE'), max_length=6)
+    data_one = models.IntegerField(_('FT'), validators=[MinValueValidator(0)])
+    data_two = models.IntegerField(_('DT'), validators=[MinValueValidator(0)])
+    data_three = models.IntegerField(_('PT'), )
+    calculated_value = models.DecimalField(_('NPFD'), max_digits=7, decimal_places=2, blank=True, )
 

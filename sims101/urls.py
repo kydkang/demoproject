@@ -12,6 +12,7 @@ urlpatterns = [
     path('ajax/change_session/', views.ajax_change_session, name='ajax_change_session'),  
     path('ajax/calculate/', views.ajax_calculate, name='ajax_calculate'), 
     path('ajax/validated/', views.ajax_validated, name='ajax_validated'), 
+    path('ajax/expand/', views.ajax_expand, name='ajax_expand'), 
     path('export/csv/', views.export_xls, name='export_users_csv'), 
 
 ]

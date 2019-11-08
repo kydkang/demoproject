@@ -54,6 +54,7 @@
                             <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
                             <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
                         {% endif %}
+                        <a href="" onclick="return false;" class="btn btn-sm btn-outline-primary btn-editdelete expand-button" data-index-id="{{ index.id }}"> Expand </a> 
                     </div>
                 {% else %}
                     <div class="col-sm-3" id="contributor-buttons">
@@ -64,6 +65,7 @@
                     </div>
                 {% endif %}
             </div>
+            <div class="row" id="expanded-rows"> </div>
         {% endfor %}
     </div>
 
@@ -89,59 +91,82 @@
         {% endcomment %}
     </form>
 
-<!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
-      $(".validate-button").click(function () {   
+    $(".expand-button").click(function () {   
         var index_id = $(this).attr("data-index-id");  
-        var url = $("#button-set").attr("data-validate-url"); 
-        // var url = "/101/ajax/validated/"; 
+        // var url = $("#button-set").attr("data-validate-url"); 
+        var url = "/101/ajax/expand/"; 
+        alert(index_id); 
         $.ajax({
             url: url,
             data: { 
                 'index_id': index_id, 
             },
             success: function (data) {
-                $("#contributor-buttons").html(data);
-             }
+                $("#expanded-rows").html(data);
+            }
         }); 
     }); 
 </script>  
 
+<!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
-      $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
-      var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
-      var data_one = $("#id_data_one").val(); 
-      var data_two = $("#id_data_two").val();  
-      var data_three = $("#id_data_three").val(); 
-      $.ajax({                // initialize an AJAX request
-        url: url,              // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
-        data: {
-            'data_one': data_one, 
-            'data_two': data_two, 
-            'data_three': data_three,
-        },
-        success: function (data) {   // `data` is the return value of the `load_cities` view function
-          $("#calculated_value").html(data);   // replace the contents of dropdown list 
-        }
+        $(".validate-button").click(function () {   
+          var index_id = $(this).attr("data-index-id");  
+          var url = $("#button-set").attr("data-validate-url"); 
+          // var url = "/101/ajax/validated/"; 
+          $.ajax({
+              url: url,
+              data: { 
+                  'index_id': index_id, 
+              },
+              success: function (data) {
+                  $("#contributor-buttons").html(data);
+               }
+          }); 
+          window.location.href = "{{ request.path }}"; 
+      }); 
+  </script>  
+  
+  <script>
+        $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
+        // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
+        var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
+        var data_one = $("#id_data_one").val(); 
+        var data_two = $("#id_data_two").val();  
+        var data_three = $("#id_data_three").val(); 
+        $.ajax({                // initialize an AJAX request
+          url: url,              // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+          data: {
+              'data_one': data_one, 
+              'data_two': data_two, 
+              'data_three': data_three,
+          },
+          success: function (data) {   // `data` is the return value of the `load_cities` view function
+            $("#calculated_value").html(data);   // replace the contents of dropdown list 
+          }
+        });
       });
-    });
-</script>  
+  </script>  
+  
+  <!-- This is for pagination (if a new record is added, redirect to the last page and reset the 'create' session value to false)  -->
+  <script>
+      if ( {{ request.session.created }} ) {   
+          var url = "/101/ajax/change_session/" 
+          $.ajax({
+              url: url,
+              data: { },
+              success: function (data) { }
+          }); 
+          // redirect to the last page 
+          window.location.href = "{{ request.path }}"; 
+          // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
+      }; 
+  </script>  
 
-<!-- This is for pagination (if a new record is added, redirect to the last page and reset the 'create' session value to false)  -->
-<script>
-    if ( {{ request.session.created }} ) {   
-        var url = "/101/ajax/change_session/" 
-        $.ajax({
-            url: url,
-            data: { },
-            success: function (data) { }
-        }); 
-        // redirect to the last page 
-        window.location.href = "{{ request.path }}"; 
-        // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
-    }; 
-</script>  
 {% endblock content %}
+
+
 
 {% comment %}
 {% block pagination %}

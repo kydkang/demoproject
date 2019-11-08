@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage,  PageNotAnInteger
 from decimal import Decimal
-from .models import Index101
+from .models import Index101, Index101Data
 from .forms import IndexForm 
 from commons.models import Description
 from django.contrib import messages
@@ -60,6 +60,13 @@ def ajax_validated(request):
     target.validated=True
     target.save()
     return render(request, 'sims101/validated.html') 
+
+def ajax_expand(request): 
+    index_id = int(request.GET.get('index_id')) 
+    print(index_id)
+    target =  get_object_or_404(Index101, id=index_id)
+    data_rows = target.backdata.all()
+    return render(request, 'sims101/expanded.html', {'data_rows': data_rows}) 
 
 class IndexUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = ('sims101.index101_validator') 
