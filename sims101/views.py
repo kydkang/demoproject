@@ -61,12 +61,12 @@ def ajax_validated(request):
     target.save()
     return render(request, 'sims101/validated.html') 
 
-def ajax_expand(request): 
-    index_id = int(request.GET.get('index_id')) 
-    print(index_id)
-    target =  get_object_or_404(Index101, id=index_id)
-    data_rows = target.backdata.all()
-    return render(request, 'sims101/expanded.html', {'data_rows': data_rows}) 
+# def ajax_expand(request): 
+#     index_id = int(request.GET.get('index_id')) 
+#     print(index_id)
+#     target =  get_object_or_404(Index101, id=index_id)
+#     data_rows = target.backdata.all()
+#     return render(request, 'sims101/expanded.html', {'data_rows': data_rows}) 
 
 class IndexUpdateView(PermissionRequiredMixin, UpdateView):
     permission_required = ('sims101.index101_validator') 
@@ -74,6 +74,11 @@ class IndexUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = IndexForm
     template_name = 'sims101/index_update.html'
     success_url = reverse_lazy('sims101:index_list')  
+
+def data_expand(request, pk):
+    index = get_object_or_404(Index101, id=pk)
+    data_rows = index.backdata.all()
+    return render(request, 'sims101/data_expand.html', {'data_rows': data_rows}) 
 
 # @permission_required('sims101.index101_validator')
 # def IndexUpdateView(request, pk): 

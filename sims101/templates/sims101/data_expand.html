@@ -1,0 +1,29 @@
+{% extends 'base.html' %}      <!--  https://overiq.com/django-1-11/django-rendering-form-fields-manually/  -->
+
+{% block content %}
+
+<div class="container">
+    <div class="col-10">  <hr> </div>
+    <div class="row mt-0">
+        <div class="col-sm-2 text-center">    FT </div>
+        <div class="col-sm-2 text-center">    DT </div>
+        <div class="col-sm-2 text-center">    PT </div>
+        <div class="col-sm-2 text-center">    NPFD </div>
+    </div>
+
+    <div class="col-10">  <hr> </div>
+    {% for row in data_rows %}
+        <div class="row mt-3" >
+                <div class="col-sm-2 text-center">{{ row.data_one }}</div>
+                <div class="col-sm-2 text-center">{{ row.data_two }}</div>
+                <div class="col-sm-2 text-center">{{ row.data_three }}</div>
+                <div class="col-sm-2 text-center">{{ row.calculated_value }}</div>
+        </div>
+    {% endfor %}  
+
+    <div class="row mt-4">
+        <a class="mt-3 btn btn-custom  btn-outline-primary mr-4" href="{% url 'sims101:index_list'%}"> Go back </a>  
+      </div>
+</div>
+
+ {% endblock content %}

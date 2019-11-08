@@ -54,7 +54,7 @@
                             <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
                             <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
                         {% endif %}
-                        <a href="" onclick="return false;" class="btn btn-sm btn-outline-primary btn-editdelete expand-button" data-index-id="{{ index.id }}"> Expand </a> 
+                        <a href="{% url 'sims101:data_expand' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Expand </a> 
                     </div>
                 {% else %}
                     <div class="col-sm-3" id="contributor-buttons">
@@ -91,23 +91,6 @@
         {% endcomment %}
     </form>
 
-<script>
-    $(".expand-button").click(function () {   
-        var index_id = $(this).attr("data-index-id");  
-        // var url = $("#button-set").attr("data-validate-url"); 
-        var url = "/101/ajax/expand/"; 
-        alert(index_id); 
-        $.ajax({
-            url: url,
-            data: { 
-                'index_id': index_id, 
-            },
-            success: function (data) {
-                $("#expanded-rows").html(data);
-            }
-        }); 
-    }); 
-</script>  
 
 <!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
@@ -194,6 +177,26 @@
     
 {% endblock pagination %} 
 {% endcomment %}
+
+
+<!-- <script>
+    $(".expand-button").click(function () {   
+        var index_id = $(this).attr("data-index-id");  
+        var this_row = $(this); 
+        // var url = $("#button-set").attr("data-validate-url"); 
+        var url = "/101/ajax/expand/"; 
+        alert(index_id); 
+        $.ajax({
+            url: url,
+            data: { 
+                'index_id': index_id, 
+            },
+            success: function (data) {
+                this_row.html(data);
+            }
+        }); 
+    }); 
+</script>   -->
 
 
 
