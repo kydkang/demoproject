@@ -68,46 +68,23 @@ def ajax_validated(request):
 #     data_rows = target.backdata.all()
 #     return render(request, 'sims101/expanded.html', {'data_rows': data_rows}) 
 
-class IndexUpdateView(PermissionRequiredMixin, UpdateView):
-    permission_required = ('sims101.index101_validator') 
+class IndexUpdateView(UpdateView):
+    # permission_required = ('sims101.index101_validator') 
     model = Index101
     form_class = IndexForm
     template_name = 'sims101/index_update.html'
     success_url = reverse_lazy('sims101:index_list')  
 
-def data_expand(request, pk):
-    index = get_object_or_404(Index101, id=pk)
-    data_rows = index.backdata.all()
-    return render(request, 'sims101/data_expand.html', {'data_rows': data_rows}) 
-
-# @permission_required('sims101.index101_validator')
-# def IndexUpdateView(request, pk): 
-
-#     obj = get_object_or_404(Index101, pk=pk)
-
-#     form = IndexForm(request.POST or None, instance=obj)
-    
-#     if form.is_valid():              
-#         # obj = form.save(commit=False)
-#         object = obj.save()
-#         context = {'form':form, 'object':object}
-#         messages.success(request, "You successfully updated the index")
-#         return render(request, 'sims101/index_update.html', context)
-
-#     context = {'form':form, 'error':'The form was not updated successfully. Please enter values again.'}
-#     return render(request, 'sims101/index_update.html', context)
-
-
-
-
-
-class IndexDeleteView(PermissionRequiredMixin, DeleteView):
-    permission_required = ('sims101.index101_validator')    
+class IndexDeleteView(DeleteView):
+    # permission_required = ('sims101.index101_validator')    
     model = Index101
     template_name = 'sims101/index_delete.html'
     success_url = reverse_lazy('sims101:index_list')  
     
-
+def data_expand(request, pk):
+    index = get_object_or_404(Index101, id=pk)
+    data_rows = index.backdata.all()
+    return render(request, 'sims101/data_expand.html', {'data_rows': data_rows}) 
 
 import xlwt
 from django.http import HttpResponse
@@ -190,3 +167,17 @@ def export_xls(request):
 #     permission_required = ('sims101.index-contributor') 
 #     model = Index101
 #     template_name = 'sims101/index_detail.html' 
+
+
+# @permission_required('sims101.index101_validator')
+# def IndexUpdateView(request, pk): 
+#     obj = get_object_or_404(Index101, pk=pk)
+#     form = IndexForm(request.POST or None, instance=obj)
+#     if form.is_valid():              
+#         # obj = form.save(commit=False)
+#         object = obj.save()
+#         context = {'form':form, 'object':object}
+#         messages.success(request, "You successfully updated the index")
+#         return render(request, 'sims101/index_update.html', context)
+#     context = {'form':form, 'error':'The form was not updated successfully. Please enter values again.'}
+#     return render(request, 'sims101/index_update.html', context)

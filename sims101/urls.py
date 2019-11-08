@@ -14,7 +14,7 @@ urlpatterns = [
     path('ajax/validated/', views.ajax_validated, name='ajax_validated'), 
     # path('ajax/expand/', views.ajax_expand, name='ajax_expand'), 
     path('data/<int:pk>/expand/', views.data_expand, name='data_expand'), 
-    path('export/csv/', views.export_xls, name='export_users_csv'), 
+    path('export/csv/', views.export_xls, name='export_csv'), 
 
 ]
 

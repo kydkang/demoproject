@@ -96,6 +96,9 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 
     - [ under Web tab ] Reload sngreecu.pythonanywhere.com  
 
+    - python manage.py runserver
+    - go to admin and create users (consolidators and validators)
+
 
 
 [[ Demo1 ]]
@@ -116,25 +119,24 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - Delete 화면에서 cancel 버튼 추가
     - Edit 화면에서 cancel 버튼 추가 
     - Validate button 추가 
+    - (Expand버튼숨기기)
 
 [[ DemoX ]]
-    - expand button 추가 (추가 입력 데이터)
-    - translation 
+    - contributor role 제거하기 (필요 없음...) 
+    - expand button 추가 (supporting 데이터)
+    - expaned data Excel download (index download 참조)
+    - translation (셋업.py에서 랭귀지를 en으로 변경)
     - left column Navigator 
-    - File download 
+    - File download (코멘트아웃되어있음)
     - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
-    - password change 
-    - pagination 
+    - password change (코멘트아웃되어있음)
+    - pagination (See below)
     - Edit 화면에서 calculate 버튼 추가 
+    - Register (새 유저 추가 - 코멘트아웃되어있음)
 
 
 
-[[ Deploy 준비 ]] 
-- 셋업.py에서 랭귀지를 en으로 변경하기 
-- user 생성 (admin, admin), (contributor, contributor) (validator, validator) 
-- 등록레지스터 코멘트아웃되어있음 (홈.베이스) 
-- 패스워드체인지 코멘트아웃되어있음(홈))
-- pagination 작동 정지되어 있음.  작동시키려면   
+pagination 작동 정지되어 있음.  작동시키려면   
    : IndexListView에서 333을 작은 숫자 변경 (e.g., 5)
    : index_list.html에서 {% block pagination %} 섹션을 언코멘트
    : index_list.html의 script에서 

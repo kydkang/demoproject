@@ -1,7 +1,9 @@
+admin에서 Index101Data를 열면 에러... 데이터가 없어서 그런 것??? 
 
 django update 기능  function view로 구현 방법 
 
-- Delete 화면에서 cancel 버튼 추가
+file download for index backup data 
+
 - Edit 화면에서 calculate 버튼 추가 
 
 - left column Navigator 

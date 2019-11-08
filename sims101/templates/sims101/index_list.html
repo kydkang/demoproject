@@ -32,42 +32,42 @@
 {% comment %}    
 {% endcomment %}
 
-    <div class="container">
-        <div class="col-10">  <hr> </div>
-        <div class="row mt-0">
-            <div class="col-sm-2 text-center">    FT </div>
-            <div class="col-sm-2 text-center">    DT </div>
-            <div class="col-sm-2 text-center">    PT </div>
-            <div class="col-sm-2 text-center">    NPFD </div>
-        </div>
-        <div class="col-10">  <hr> </div>
-        {% for index in object_list %}
-            <div class="row mt-3" >
-                <div class="col-sm-2 text-center">{{ index.data_one }}</div>
-                <div class="col-sm-2 text-center">{{ index.data_two }}</div>
-                <div class="col-sm-2 text-center">{{ index.data_three }}</div>
-                <div class="col-sm-2 text-center">{{ index.calculated_value }}</div>
-                {% if 'sims101.index101_validator' in perms %}
-                    <div class="col-sm-3 " id="button-set" data-validate-url="{% url 'sims101:ajax_validated' %}">
-                        {% if not index.validated  %}
-                            <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a> 
-                            <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
-                            <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
-                        {% endif %}
-                        <a href="{% url 'sims101:data_expand' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Expand </a> 
-                    </div>
-                {% else %}
-                    <div class="col-sm-3" id="contributor-buttons">
-                        {% if not index.validated  %}
-                            <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete "> Edit </a> 
-                            <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
-                        {% endif %}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="row" id="expanded-rows"> </div>
-        {% endfor %}
-    </div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center" style="width: 10%">FT</th>
+                <th class="text-center" style="width: 10%">DT</th>
+                <th class="text-center" style="width: 10%">PT</th>
+                <th class="text-center" style="width: 10%">NPFD</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index in object_list %}
+            <tr>
+                <td class="text-center" style="width: 10%">{{ index.data_one }}</td>
+                <td class="text-center" style="width: 10%">{{ index.data_two }}</td>
+                <td class="text-center" style="width: 10%">{{ index.data_three }}</td>
+                <td class="text-center" style="width: 10%">{{ index.calculated_value }}</td>
+                <td style="width: 20%" id="contributor-buttons">
+                    {% if not index.validated  %}
+                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
+                        <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                    {% endif %}  
+                </td> 
+                <td>
+                    <a href="{% url 'sims101:data_expand' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Expand </a> 
+                    {% if not index.validated  %}
+                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a>
+                    {% endif %}  
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody> 
+    </table>
+</div>
 
     <h6 class="mt-4"> New Index Data </h6>
     {{ form.non_field_errors }}
@@ -75,9 +75,9 @@
         {% csrf_token %}
         <div class="row">
             {{ form.non_field_errors }}
-            <div class="col-2 mr-4"> {{ form.data_one|as_crispy_field }} </div>
-            <div class="col-2 mr-4"> {{ form.data_two|as_crispy_field }} </div>
-            <div class="col-2 mr-4"> {{ form.data_three|as_crispy_field }} </div>
+            <div class="col-2 mr-1"> {{ form.data_one|as_crispy_field }} </div>
+            <div class="col-2 mr-1"> {{ form.data_two|as_crispy_field }} </div>
+            <div class="col-2 mr-1"> {{ form.data_three|as_crispy_field }} </div>
             <div class="col-2" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
         </div>
         <div class="row" >
@@ -86,7 +86,7 @@
         </div>
         {% comment %}
         <div class="row mt-4">
-                <a class="col-sm-11 " href="{% url 'sims101:export_users_csv'%}"> Download all index data </a>  
+                <a class="col-sm-11 " href="{% url 'sims101:export_csv'%}"> Download all index data </a>  
         </div>
         {% endcomment %}
     </form>
@@ -96,17 +96,18 @@
 <script>
         $(".validate-button").click(function () {   
           var index_id = $(this).attr("data-index-id");  
-          var url = $("#button-set").attr("data-validate-url"); 
-          // var url = "/101/ajax/validated/"; 
+          // var url = $("#button-set").attr("data-validate-url"); 
+          var url = "/101/ajax/validated/"; 
+          alert(index_id); 
           $.ajax({
               url: url,
               data: { 
                   'index_id': index_id, 
               },
-              success: function (data) {
-                  $("#contributor-buttons").html(data);
+              success: function (data) {  // do noting, 
+                //   $("#contributor-buttons").html(data);
                }
-          }); 
+          }); //just reload the page to hide the buttons 
           window.location.href = "{{ request.path }}"; 
       }); 
   </script>  
