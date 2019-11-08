@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-3">   {% trans "Description:" %}  </div>
             <div class="col-md-8" >     
-                    {% if first %} {{ first.description.description|linebreaks}} {% else %} {{ description.description|linebreaks}} {% endif %}
+                    {% if first %} {{ first.description.description|linebreaks }} {% else %} {{ description.description|linebreaks }} {% endif %}
             </div>
         </div>
     </div>
@@ -109,7 +109,6 @@
 
 <script>
       $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
-      // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
       var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
       var data_one = $("#id_data_one").val(); 
       var data_two = $("#id_data_two").val();  

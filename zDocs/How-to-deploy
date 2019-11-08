@@ -66,7 +66,7 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
  export  SECRET_KEY=' ** create a new project and put a copy of secret key here** '
  export  DEBUG=""
 
-[[ To make demoX ]]
+[[ To deploy demoX ]]
 - in the local computer 
     - git branch demoX     [[ create DemoXXX branch ]] 
     - git checkout demoX
@@ -98,8 +98,6 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 
 
 
-
-
 [[ Demo1 ]]
     - add index
     - delete index
@@ -117,9 +115,10 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - Index102 
     - Delete 화면에서 cancel 버튼 추가
     - Edit 화면에서 cancel 버튼 추가 
-
-[[ Demo4 ]]
     - Validate button 추가 
+
+[[ DemoX ]]
+    - expand button 추가 (추가 입력 데이터)
     - translation 
     - left column Navigator 
     - File download 
