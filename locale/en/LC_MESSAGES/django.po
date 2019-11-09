@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-22 11:15-0500\n"
+"POT-Creation-Date: 2019-11-09 17:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Log-in"
 msgstr ""
 
-#: .\account\templates\registration\login.html:23
+#: .\account\templates\registration\login.html:21
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
@@ -79,50 +79,114 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: .\sims101\models.py:9 .\sims103\models.py:9
-msgid "data one"
+#: .\sims101\models.py:12 .\sims101\models.py:51 .\sims102\models.py:12
+msgid "FT"
 msgstr ""
 
-#: .\sims101\models.py:10 .\sims103\models.py:10
-msgid "data two"
+#: .\sims101\models.py:13 .\sims101\models.py:52
+msgid "DT"
 msgstr ""
 
-#: .\sims101\models.py:11 .\sims103\models.py:11
-msgid "calculated value"
+#: .\sims101\models.py:14 .\sims101\models.py:53 .\sims102\models.py:13
+msgid "PT"
 msgstr ""
 
-#: .\sims101\templates\sims101\index_list.html:9
+#: .\sims101\models.py:15 .\sims101\models.py:54
+msgid "NPFD"
+msgstr ""
+
+#: .\sims101\models.py:43 .\sims102\models.py:42
+msgid "Entered numbers are not correct.  Try again."
+msgstr ""
+
+#: .\sims101\models.py:47
+msgid "Province"
+msgstr ""
+
+#: .\sims101\models.py:48
+msgid "Canton"
+msgstr ""
+
+#: .\sims101\models.py:49
+msgid "Parroquia"
+msgstr ""
+
+#: .\sims101\models.py:50
+msgid "CODE"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:11
+#: .\sims102\templates\sims102\index_list.html:11
 msgid "Department:"
 msgstr ""
 
-#: .\sims101\templates\sims101\index_list.html:19
+#: .\sims101\templates\sims101\index_list.html:18
+#: .\sims102\templates\sims102\index_list.html:18
 msgid "Index:"
 msgstr ""
 
-#: .\sims101\templates\sims101\index_list.html:29
+#: .\sims101\templates\sims101\index_list.html:25
+#: .\sims102\templates\sims102\index_list.html:25
 msgid "Description:"
 msgstr ""
 
-#: .\sims_project\settings.py:122
+#: .\sims101\templates\sims101\index_list.html:52
+msgid "Edit"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:53
+msgid "Delete"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:57
+msgid "Expand"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:59
+msgid "Validate"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:69
+msgid "New Index Data"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:81
+msgid "Save"
+msgstr ""
+
+#: .\sims101\templates\sims101\index_list.html:82
+msgid "Calculate"
+msgstr ""
+
+#: .\sims102\models.py:14
+msgid "NF"
+msgstr ""
+
+#: .\sims_project\settings.py:117
 msgid "English"
 msgstr ""
 
-#: .\sims_project\settings.py:123
+#: .\sims_project\settings.py:118
 msgid "Spanish"
-msgstr ""
-
-#: .\templates\base.html:38
-msgid "Change Password"
 msgstr ""
 
 #: .\templates\base.html:39
 msgid "Logout"
 msgstr ""
 
-#: .\templates\base.html:45
+#: .\templates\base.html:46
 msgid "Log in"
 msgstr ""
 
 #: .\templates\signup.html:11
 msgid "Sign up"
+msgstr ""
+
+#: .\zDocs\How-to-create-translations.txt:44
+msgid "Text to be translated"
+msgstr ""
+
+#: .\zDocs\How-to-create-translations.txt:46
+#, python-format
+msgid " Hello %(name)s! "
 msgstr ""

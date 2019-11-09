@@ -89,7 +89,6 @@ def data_expand(request, pk):
 import xlwt
 from django.http import HttpResponse
 # https://simpleisbetterthancomplex.com/tutorial/2016/07/29/how-to-export-to-excel.html
-
 def export_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="index.xls"'

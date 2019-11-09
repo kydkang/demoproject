@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row"> <div class="col-12"> <hr> </div> </div>
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-md-3">   {% trans "Description:" %}  </div>
             <div class="col-md-8" >     
                     {% if first %} {{ first.description.description|linebreaks }} {% else %} {{ description.description|linebreaks }} {% endif %}
@@ -29,37 +29,34 @@
         </div>
     </div>
 
-{% comment %}    
-{% endcomment %}
-
 <div class="container">
     <table class="table">
         <thead>
             <tr>
-                <th class="text-center" style="width: 10%">FT</th>
-                <th class="text-center" style="width: 10%">DT</th>
-                <th class="text-center" style="width: 10%">PT</th>
-                <th class="text-center" style="width: 10%">NPFD</th>
+                <th class="text-center" style="width: 15%">FT</th>
+                <th class="text-center" style="width: 15%">DT</th>
+                <th class="text-center" style="width: 15%">PT</th>
+                <th class="text-center" style="width: 15%">NPFD</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             {% for index in object_list %}
             <tr>
-                <td class="text-center" style="width: 10%">{{ index.data_one }}</td>
-                <td class="text-center" style="width: 10%">{{ index.data_two }}</td>
-                <td class="text-center" style="width: 10%">{{ index.data_three }}</td>
-                <td class="text-center" style="width: 10%">{{ index.calculated_value }}</td>
+                <td class="text-center" style="width: 15%">{{ index.data_one }}</td>
+                <td class="text-center" style="width: 15%">{{ index.data_two }}</td>
+                <td class="text-center" style="width: 15%">{{ index.data_three }}</td>
+                <td class="text-center" style="width: 15%">{{ index.calculated_value }}</td>
                 <td style="width: 20%" id="contributor-buttons">
                     {% if not index.validated  %}
-                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Edit </a> 
-                        <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> Delete</a> 
+                        <a href="{% url 'sims101:index_update' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> {% trans "Edit" %} </a> 
+                        <a href="{% url 'sims101:index_delete' index.id %}" class="btn btn-sm btn-outline-danger btn-editdelete"> {% trans "Delete" %} </a> 
                     {% endif %}  
                 </td> 
-                <td>
-                    <a href="{% url 'sims101:data_expand' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> Expand </a> 
+                <td style="width: 20%" class="ml-auto">
+                    <a href="{% url 'sims101:data_expand' index.id %}" class="btn btn-sm btn-outline-primary btn-editdelete"> {% trans "Expand" %}  </a> 
                     {% if not index.validated  %}
-                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> Validate </a>
+                        <a href="" class="btn btn-sm btn-outline-primary btn-editdelete validate-button" data-index-id="{{ index.id }}"> {% trans "Validate" %} </a>
                     {% endif %}  
                 </td>
 
@@ -69,84 +66,83 @@
     </table>
 </div>
 
-    <h6 class="mt-4"> New Index Data </h6>
-    {{ form.non_field_errors }}
-    <form action="{% url 'sims101:index_list' %}" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            {{ form.non_field_errors }}
-            <div class="col-2 mr-1"> {{ form.data_one|as_crispy_field }} </div>
-            <div class="col-2 mr-1"> {{ form.data_two|as_crispy_field }} </div>
-            <div class="col-2 mr-1"> {{ form.data_three|as_crispy_field }} </div>
-            <div class="col-2" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
-        </div>
-        <div class="row" >
-            <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value="Save" />
-            <button class="mt-3 btn  btn-custom btn-outline-primary mr-4" id="calculate-button" type="button"> Calculate </button>
-        </div>
-        {% comment %}
-        <div class="row mt-4">
-                <a class="col-sm-11 " href="{% url 'sims101:export_csv'%}"> Download all index data </a>  
-        </div>
-        {% endcomment %}
-    </form>
+<h6 class="mt-5"> {% trans "New Index Data" %}  </h6>
+{{ form.non_field_errors }}
+<form action="{% url 'sims101:index_list' %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        {{ form.non_field_errors }}
+        <div class="col-2 mr-1 text-center "> {{ form.data_one|as_crispy_field }} </div>
+        <div class="col-2 mr-1 text-center"> {{ form.data_two|as_crispy_field }} </div>
+        <div class="col-2 mr-1 text-center"> {{ form.data_three|as_crispy_field }} </div>
+        <div class="col-2 text-center" id="calculated_value"> {{ form.calculated_value|as_crispy_field }} </div>
+    </div>
+    <div class="row" >
+        <input class="mt-3 ml-3 btn btn-custom  btn-outline-primary mr-4" type="submit" value={% trans "Save" %} />
+        <button class="mt-3 btn  btn-custom btn-outline-primary mr-4" id="calculate-button" type="button"> {% trans "Calculate" %} </button>
+    </div>
+    {% comment %}
+    <div class="row mt-4">
+            <a class="col-sm-11 " href="{% url 'sims101:export_csv'%}"> Download all index data </a>  
+    </div>
+    {% endcomment %}
+</form>
 
 
 <!-- set the 'validate' flag in the database for the record and remove buttons -->
 <script>
-        $(".validate-button").click(function () {   
-          var index_id = $(this).attr("data-index-id");  
-          // var url = $("#button-set").attr("data-validate-url"); 
-          var url = "/101/ajax/validated/"; 
-          alert(index_id); 
-          $.ajax({
-              url: url,
-              data: { 
-                  'index_id': index_id, 
-              },
-              success: function (data) {  // do noting, 
-                //   $("#contributor-buttons").html(data);
-               }
-          }); //just reload the page to hide the buttons 
-          window.location.href = "{{ request.path }}"; 
-      }); 
-  </script>  
+    $(".validate-button").click(function () {   
+        var index_id = $(this).attr("data-index-id");  
+        // var url = $("#button-set").attr("data-validate-url"); 
+        var url = "/101/ajax/validated/"; 
+        $.ajax({
+            url: url,
+            data: { 
+                'index_id': index_id, 
+            },
+            success: function (data) {  // do noting, 
+            //   $("#contributor-buttons").html(data);
+            }
+        }); //just reload the page to hide the buttons 
+        window.location.href = "{{ request.path }}"; 
+    }); 
+</script>  
   
-  <script>
-        $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
-        // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
-        var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
-        var data_one = $("#id_data_one").val(); 
-        var data_two = $("#id_data_two").val();  
-        var data_three = $("#id_data_three").val(); 
-        $.ajax({                // initialize an AJAX request
-          url: url,              // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
-          data: {
-              'data_one': data_one, 
-              'data_two': data_two, 
-              'data_three': data_three,
-          },
-          success: function (data) {   // `data` is the return value of the `load_cities` view function
-            $("#calculated_value").html(data);   // replace the contents of dropdown list 
-          }
-        });
-      });
-  </script>  
+<script>
+    $("#calculate-button").click(function () {               // $ is a shortcut for jQuery
+    // var url = $("#informeForm").attr("data-satimages-url");  // get the url of the `load_cities` view
+    var url = "/101/ajax/calculate/";  // get the selected event ID from the HTML input
+    var data_one = $("#id_data_one").val(); 
+    var data_two = $("#id_data_two").val();  
+    var data_three = $("#id_data_three").val(); 
+    $.ajax({                // initialize an AJAX request
+        url: url,              // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+            'data_one': data_one, 
+            'data_two': data_two, 
+            'data_three': data_three,
+        },
+        success: function (data) {   // `data` is the return value of the `load_cities` view function
+        $("#calculated_value").html(data);   // replace the contents of dropdown list 
+        }
+    });
+    });
+</script>  
   
-  <!-- This is for pagination (if a new record is added, redirect to the last page and reset the 'create' session value to false)  -->
-  <script>
-      if ( {{ request.session.created }} ) {   
-          var url = "/101/ajax/change_session/" 
-          $.ajax({
-              url: url,
-              data: { },
-              success: function (data) { }
-          }); 
-          // redirect to the last page 
-          window.location.href = "{{ request.path }}"; 
-          // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
-      }; 
-  </script>  
+<!-- This is for pagination (if a new record is added, redirect to the last page and reset the 'create' session value to false)  -->
+<script>
+    if ( {{ request.session.created }} ) {   
+        var url = "/101/ajax/change_session/" 
+        $.ajax({
+            url: url,
+            data: { },
+            success: function (data) { }
+        }); 
+        // redirect to the last page 
+        window.location.href = "{{ request.path }}"; 
+        // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
+    }; 
+</script>  
 
 {% endblock content %}
 

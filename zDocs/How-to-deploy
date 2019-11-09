@@ -99,8 +99,6 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - python manage.py runserver
     - go to admin and create users (consolidators and validators)
 
-
-
 [[ Demo1 ]]
     - add index
     - delete index

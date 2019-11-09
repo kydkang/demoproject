@@ -1,4 +1,18 @@
-[[ How to create translations ]] - dj2ByExCh9
+
+0. gettext 설치 
+[[ download from  https://mlocati.github.io/articles/gettext-iconv-windows.html  ]]  
+[[다운로드 후, C:\gettext에다 upzip,  path에 C:\gettext\bin 추가 ]]  [[ setup에서 자동으로 path 잡아줌 ]] 
+
+Create the following directory structure inside the main project directory, next to the manage.py file:
+locale/
+    en/
+    es/
+
+In settings.py, add 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
 
 1. Mark the English phrases as follows: 
 from django.utils.translation import gettext_lazy as _
@@ -6,6 +20,8 @@ output = _('Text to be translated.')
 
 2. Execute the following command from your project root directory:
     - django-admin makemessages --all   
+    [[ in settings.py  'django.middleware.locale.LocaleMiddleware'  should not be commented out. ]]
+    [[ if error occurs, delete the ToDo.txt file. ]]
 
 3. In the file in locale/es/LC_MESSAGES/django.po
     - enter the translation for each word
@@ -13,6 +29,7 @@ output = _('Text to be translated.')
 
 4. Execute the following command from your project root directory: 
     - django-admin compilemessages 
+    [[ in settings.py  'django.middleware.locale.LocaleMiddleware'  should not be commented out. ]]
 
 To see the translation, in settings.py 
     - change the LANGUAGE_CODE to 'es'

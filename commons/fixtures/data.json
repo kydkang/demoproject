@@ -1,22 +1,22 @@
 [
 {
   "model": "commons.description",
-  "pk": 2,
+  "pk": 1,
   "fields": {
     "sequence": "101",
-    "department": "An\u00e1lisis de Riesgos",
+    "department": "Gesti\u00f3n de la Informaci\u00f3n",
     "index_name": "N\u00famero de personas fallecidas y desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A1)",
     "description": "Este indicador se define como la relaci\u00f3n existente entre el n\u00famero total de personas fallecidas y personas desaparecidas, por desastres por cada 100.000 personas con respecto al total de la poblaci\u00f3n en un mismo periodo."
   }
 },
 {
   "model": "commons.description",
-  "pk": 3,
+  "pk": 2,
   "fields": {
     "sequence": "102",
-    "department": "Gesti\u00f3n de la Informaci\u00f3n",
-    "index_name": "N\u00famero de personas fallecidas atribuido a los desastres, por cada 100.000 habitantes. (A2)",
-    "description": "Este indicador se define como la relaci\u00f3n existente entre el n\u00famero total personas fallecidas por desastres por cada 100.000 personas con respecto al total de la poblaci\u00f3n en un mismo periodo."
+    "department": "An\u00e1lisis de Riesgos",
+    "index_name": "ooo",
+    "description": "return self.department"
   }
 }
 ]

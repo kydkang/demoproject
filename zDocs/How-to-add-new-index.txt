@@ -31,6 +31,7 @@ In index_list.html
   - in ajax script, change form field name 
 
 In data_expand.html 
+  - 101 > 102 
   - modify the column head base on Index102Data table 
 
 In index_update.html
