@@ -2,6 +2,9 @@
 
 
 [[ For Initial Deployment ]]  [[ Tango with Django ]]
+
+git init should be executed in the project directory (where the manage.py file is located) 
+
 In settings.py, modify as follows: 
 
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '8#0q@*y)8-69kxan2jci5d(mb0f&o11-6(rm&y4rrvpg-63@0c')
