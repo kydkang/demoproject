@@ -12,6 +12,7 @@ In urls.py (app-level of sims102), change app_name to 'sims102'
 in apps.py, change the name to 'sims102'
 In admin.py, 
   - 101 > 102
+  - modify fields 
 In models.py,  
   - 101 > 102 
   - modify data fields
