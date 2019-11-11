@@ -116,7 +116,7 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - reflect correct definition for index to "Número de personas fallecidas y desaparecidas atribuido a los desastres, por cada 100.000 habitantes. (A1)"
 
 [[ Demo3 ]]
-    - Index102 
+    - (Index102)
     - Delete 화면에서 cancel 버튼 추가
     - Edit 화면에서 cancel 버튼 추가 
     - Validate button 추가 

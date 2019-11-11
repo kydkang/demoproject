@@ -1,3 +1,6 @@
+IndexForm에서  def clean() 작성하기
+    data_one + data_two > data_three  이면 에러...??  
+
 admin에서 Index101Data를 열면 에러... 데이터가 없어서 그런 것??? 
 
 django update 기능  function view로 구현 방법 
