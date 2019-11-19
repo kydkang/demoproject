@@ -139,8 +139,8 @@
             success: function (data) { }
         }); 
         // redirect to the last page 
-        window.location.href = "{{ request.path }}"; 
-        // window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
+        //window.location.href = "{{ request.path }}"; 
+        window.location.href = "{{ request.path }}?page={{ object_list.paginator.num_pages }}"; 
     }; 
 </script>  
 
@@ -148,7 +148,7 @@
 
 
 
-{% comment %}
+
 {% block pagination %}
     <div class="container-fluid"> 
         <ul class="pagination" >
@@ -173,7 +173,7 @@
     </div>
     
 {% endblock pagination %} 
-{% endcomment %}
+
 
 
 <!-- <script>

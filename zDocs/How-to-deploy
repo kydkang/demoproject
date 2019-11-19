@@ -1,7 +1,5 @@
 
-
-
-[[ For Initial Deployment ]]  [[ Tango with Django ]]
+[[ For Initial Deployment ]]  [[ Tango with Django (PythonAnywhere) ]] 
 
 git init should be executed in the project directory (where the manage.py file is located) 
 
@@ -74,12 +72,11 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
     - git branch demoX     [[ create DemoXXX branch ]] 
     - git checkout demoX
     - modify the source for the demo 
-    - git add -A / git commit -m "Create demoX" / git push origin demoX
-
     - To dump data, in the project folder (sims_project2):  
        python manage.py dumpdata sims101 --indent=2 --output=sims101/fixtures/data.json
         Here, 'sims101' is the app name.  'data.json' is the output file name. 
-    - Do the same for each sims1** and commons apps. 
+        - Do the same for each sims1** and commons apps. 
+    - git add -A / git commit -m "Create demoX" / git push origin demoX
 
 - in the console in pythonanywhre
     [[ in the upper folder (/home/sngreecu/)]] 
@@ -95,7 +92,7 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 
     - To load data, in the project folder: 
         python manage.py loaddata sims101/fixtures/data.json 
-    - Do the same for each sims1** and commons apps. 
+        - Do the same for each sims1** and commons apps. 
 
     - [ under Web tab ] Reload sngreecu.pythonanywhere.com  
 
@@ -125,9 +122,8 @@ Enter the following lines in .bashrc  [[  create a new project and put a new sec
 [[ DemoX ]]
     - contributor role 제거하기 (필요 없음...) 
     - expand button 추가 (supporting 데이터)
-    - expaned data Excel download (index download 참조)
+    - expand data Excel download (index download 참조)
     - translation (셋업.py에서 랭귀지를 en으로 변경)
-    - left column Navigator 
     - File download (코멘트아웃되어있음)
     - Query the database based on fixed set of variables  [[ dj2ByEx - chapter 3 ]]
     - password change (코멘트아웃되어있음)

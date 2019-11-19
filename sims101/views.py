@@ -19,7 +19,7 @@ def IndexListView(request):
     # description= Description.objects.get(sequence=Index101.SEQUENCE)
     description = get_object_or_404(Description, sequence=Index101.SEQUENCE)
 
-    paginator = Paginator(object_list, 333)
+    paginator = Paginator(object_list, 3)
     page = request.GET.get('page')
     try:
         object_list = paginator.page(page)
